@@ -1,0 +1,25 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}  {%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/iofrm-style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/iofrm-theme5.css'%}">
+</head>
+<body>
+{% block content%}
+
+
+{% endblock%}
+
+
+<script src="{% static 'accounts/js/jquery.min.js'%}"></script>
+<script src="{% static 'accounts/js/popper.min.js'%}"></script>
+<script src="{% static 'accounts/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'accounts/js/main.js'%}"></script>
+</body>
+</html>

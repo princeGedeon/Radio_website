@@ -1,0 +1,61 @@
+
+{% extends "base_account.html" %}
+{% load static%}
+{%block title%} REGISTER {%endblock%}
+{% block content%}
+    <div class="form-body">
+        <div class="website-logo">
+            <a href="index.html">
+                <div class="logo">
+                    <img class="logo-size" src="images/logo-light.svg" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static 'accounts/images/graphic2.svg'%}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Get more things done with Loggin platform.</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <div class="page-links">
+                            <a href="{% url 'login'%}">Login</a><a href="{% url 'register'%}" class="active">Register</a>
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <!--
+                            <input class="form-control" type="text" name="username" placeholder="Username" required id="id_username">
+                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required id="id_email">
+                            <input class="form-control" type="text" name="first_name" placeholder="Nom de famille" required id="id_first_name">
+
+                             <input class="form-control" type="text" name="last_name" placeholder="Prenoms" required id="id_last_name">
+                            <input class="form-control" type="password" name="password1" placeholder="Password" autocomplete="new-password" id="id_password1" required>
+                            <input class="form-control" type="password" name="password2" placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
+                             {{form.as_p}}
+                            -->
+                            <input class="form-control" type="text" name="username" placeholder="Username" required id="id_username">
+                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required id="id_email">
+                            <input class="form-control" type="text" name="first_name" placeholder="Nom de famille" required id="id_first_name">
+
+                             <input class="form-control" type="text" name="last_name" placeholder="Prenoms" required id="id_last_name">
+                            <input class="form-control" type="password" name="password1" placeholder="Password" autocomplete="new-password" id="id_password1" required>
+                            <input class="form-control" type="password" name="password2" placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
+
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Register</button>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a><a href="#">Github</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
