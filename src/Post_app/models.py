@@ -37,4 +37,3 @@ class Reponse(models.Model):
 
 class UploadFiles(models.Model):
     files=models.FileField(upload_to='files/post',null=True)
-
