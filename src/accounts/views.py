@@ -15,7 +15,7 @@ def connection(request):
         if user is not None and user.is_active:
             login(request,user)
             messages.success(request,"Bienvenue")
-            redirect("home")
+            return redirect("home")
         else:
             messages.error(request,"Erreur d'authentification")
     return  render(request,"accounts/login.html")
@@ -35,3 +35,4 @@ def register(request):
 @login_required
 def deconnection(request):
     logout(request)
+    return redirect("login")

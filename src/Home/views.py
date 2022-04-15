@@ -5,4 +5,4 @@ from django.shortcuts import render
 # Create your views here.
 @login_required
 def home(request):
-    return HttpResponse("Yo")
+    return render(request,"home/index.html")
