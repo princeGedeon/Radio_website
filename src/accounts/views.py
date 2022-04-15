@@ -32,7 +32,8 @@ def register(request):
             messages.error(request,form.errors)
     return  render(request,"accounts/register.html",context={"form":form})
 
-@login_required
+@login_required(login_url='login')
 def deconnection(request):
     logout(request)
     return redirect("login")
+
