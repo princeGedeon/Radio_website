@@ -1,10 +1,11 @@
 from django.urls import path, include
 
-from accounts.views import connection, deconnection
+from accounts.views import connection, deconnection, profile
 
 from accounts.views import register
 from django.contrib.auth import views
 urlpatterns = [
+    path('profil/',profile,name="profile"),
     path('accounts/',include('allauth.urls')),
     path('login/',connection,name="login"),
     path('register/',register,name="register"),

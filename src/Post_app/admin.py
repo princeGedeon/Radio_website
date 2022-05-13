@@ -1,25 +1,24 @@
 from django.contrib import admin
 
 # Register your models here.
-from Post_app.models import Categorie, Post, Commentaire, UploadFiles, Reponse
+from Post_app.models import Categorie, CommentaireVideo,CommentaireAudio,CommentaireVisuel,Video,Visuel,Audio,Document
 
-
+@admin.register(Document)
+@admin.register(Video)
+@admin.register(Audio)
 @admin.register(Categorie)
 class CategorieAdmin(admin.ModelAdmin):
     pass
-@admin.register(Commentaire)
-class CommentaireAdmin(admin.ModelAdmin):
+@admin.register(CommentaireVideo)
+class CommentaireVideoAdmin(admin.ModelAdmin):
     pass
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+@admin.register(CommentaireVisuel)
+class CommentaireVisuelAdmin(admin.ModelAdmin):
+    pass
+@admin.register(CommentaireAudio)
+class CommentaireAudioAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Reponse)
-class ReponseAdmin(admin.ModelAdmin):
-    pass
 
 
-@admin.register(UploadFiles)
-class UploadFileAdmin(admin.ModelAdmin):
-    pass
 

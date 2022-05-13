@@ -37,3 +37,6 @@ def deconnection(request):
     logout(request)
     return redirect("login")
 
+@login_required(login_url='login')
+def profile(request):
+    return render(request,"pages/profile.html",{'user':request.user})
