@@ -1,5 +1,10 @@
 
 {% extends "base_account.html" %}
+{% load socialaccount %}
+
+{% providers_media_js %}
+
+
 {% load static%}
 {%block title%}LOGIN{%endblock%}
 {% block content%}
@@ -36,7 +41,7 @@
                             </div>
                         </form>
                         <div class="other-links">
-                            <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a><a href="#">Github</a>
+                            <span>Or login with</span><a href="{% provider_login_url 'facebook' method='oauth2'%}">Facebook</a><a href="{% provider_login_url 'google' %}">Google</a><a href="#">Linkedin</a><a href="#">Github</a>
                         </div>
                     </div>
                 </div>

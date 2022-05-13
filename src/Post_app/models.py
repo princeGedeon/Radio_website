@@ -8,10 +8,32 @@ class Categorie(models.Model):
     def __str__(self):
         return self.libelle
 
-class Post(models.Model):
+class PostAudio(models.Model):
     user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
     categorie=models.ManyToManyField(Categorie)
+    title=models.CharField(max_length=100)
+    link_audio=models.URLField()
     desc=models.TextField(max_length=30)
+    auteur=models.ManyToManyField(User,blank=True,null=True)
+    date_created=models.DateTimeField(auto_now_add=True)
+
+class PostVisuel(models.Model):
+    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
+    categorie=models.ManyToManyField(Categorie)
+    title=models.CharField(max_length=100)
+    visuel=models.ImageField(upload_to='post/visuel')
+    desc=models.TextField(max_length=30)
+    auteur=models.ManyToManyField(User,blank=True,null=True)
+    date_created=models.DateTimeField(auto_now_add=True)
+
+class PostVideo(models.Model):
+    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
+    categorie=models.ManyToManyField(Categorie)
+    title=models.CharField(max_length=100)
+    link_video=models.URLField()
+    desc=models.TextField(max_length=30)
+    auteur=models.ManyToManyField(User,blank=True,null=True)
+    date_created=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Publication de {self.user}"

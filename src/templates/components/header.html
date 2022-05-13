@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="logo">
+               <a href="#">logo</a>
+            </div>
+            <button type="button" class="nav-toggler">
+               <span></span>
+            </button>
+            <nav class="nav">
+               <ul>
+                  <li><a href="#" class="active">Acceuil</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Emission Tv</a></li>
+                  <li><a href="#">Emission Radio</a></li>
+                  <li><a href="#">Atelier graphique</a></li>
+                  <li><a href="#">Mon Profil</a></li>
+                   {% if user.is_authenticated%}
+                  <li><a href="{% url 'logout'%}">Se déconnecter</a></li>
+                   {% else%}
+                   <li><a href="{% url 'login'%}">Se Connecter</a></li>
+                   {%endif%}
+               </ul>
+            </nav>
+        </div>
+    </div>
+ </header>

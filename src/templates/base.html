@@ -1,12 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{%block title%}{%endblock%}</title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css'%}">
+    {% block style%}
+
+    {% endblock%}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+{% include 'components/header.html'%}
 {%block content%}
 
 {%endblock%}
+{% include 'components/footer.html'%}
+{% block js%}{%endblock%}
+<script type="text/javascript" src="{% static 'js/script.js'%}"></script>
 </body>
 </html>
