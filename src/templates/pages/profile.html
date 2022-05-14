@@ -8,10 +8,14 @@
 <div>
   <div class="card">
     <header  class="card_gallery">
-        <img width="100%" src="img/image1.jpg">
+        {% if user.image_couverture%}
+        <img width="100%" src="{{user.image_couverture.url}}">
+        {% endif%}
     </header>
     <main class="card__user">
-      <img src="img/image4.jpg" alt="" class="card__user-image">
+         {% if user.image%}
+      <img src="{{user.image.url}}" alt="" class="card__user-image">
+        {% endif%}
       <div class="card__user-info">
         <h2 class="card__user-info__name">{{user.last_name}}  {{user.first_name}} (<strong>{{user.username}}</strong>)</h2>
         <p class="card__user-info__stats">{{user.email}}</p>

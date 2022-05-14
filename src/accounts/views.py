@@ -9,9 +9,9 @@ from accounts.forms import UserForm
 
 def connection(request):
     if request.method=="POST":
-        username=request.POST['username']
+        email=request.POST['email']
         password=request.POST['password']
-        user=authenticate(request,username=username,password=password)
+        user=authenticate(request,email=email,password=password)
         if user is not None and user.is_active:
             login(request,user)
             messages.success(request,"Bienvenue")
