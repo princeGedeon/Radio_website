@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% load static%}
-{%block title%}WEB RADIO TV{%endblock%}4
+{%block title%}WEB RADIO TV{%endblock%}
 {%block content%}
 <div class="section1">
   		<h1><span>IFRI WEB TV RADIO</span></h1>
@@ -64,22 +64,22 @@
 		<br>
 		<div class="sub-grid">
 			<div class="sub-grid-box stat-box-1">
-				<h1><i class="fa-solid fa-users"></i> 10</h1>
+				<h1><i class="fa-solid fa-users"></i>{{n_inscrit}}</h1>
 				<h2>Inscrits</h2>
 
 			</div>
 			<div class="sub-grid-box stat-box-2">
-				<h1><i class="fa-solid fa-video"></i> 20</h1>
+				<h1><i class="fa-solid fa-video"></i> {{n_video}}</h1>
 				<h2>Vidéos</h2>
 
 			</div>
 			<div class="sub-grid-box stat-box-3">
-				<h1><i class="fa-solid fa-headphones"></i> 62</h1>
+				<h1><i class="fa-solid fa-headphones"></i> {{n_audio}}</h1>
 				<h2>Audios</h2>
 
 			</div>
 			<div class="sub-grid-box stat-box-4">
-				<h1><i class="fa-solid fa-image"></i> 30</h1>
+				<h1><i class="fa-solid fa-image"></i> {{n_visuel}}</h1>
 				<h2>Visuels</h2>
 
 			</div>
@@ -89,60 +89,19 @@
 		<section >
 		<div class="main-container">
 			<ul class="grid-wrapper">
+
+              {% for video in videos%}
 				<li class="content-item">
 					<div class="pic">
-					    <a href="video.html"><img width="100%" src="https://img.youtube.com/vi/RCivWovB3Kg/mqdefault.jpg"></a>
-					    <a href="video.html" class="centered"><i class="fa-solid fa-play"></i></a>
+					    <a href="{%url 'detail_video' video.slug%}"><img width="100%" src="{{video.get_image}}"></a>
+					    <a href="{%url 'detail_video' video.slug%}" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
-						<a href="video.html"><h3>titre de la vidéo</h3></a>
+						<a href="video.html"><h3>{{video.title}}</h3></a>
 					</div>
 				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
+				{% endfor%}
+
 
 			</ul>
 			<div style="text-align: center; margin: 10px;">
@@ -157,60 +116,17 @@
 		<section >
 		<div class="main-container">
 			<ul class="grid-wrapper">
+				{% for audio in audios%}
 				<li class="content-item">
 					<div class="pic">
 					    <a href=""><img width="100%" src="img/image2.jpg"></a>
 					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
+						<a href="#"><h3>{{audio.title}}</h3></a>
 					</div>
 				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de l'audio</h3></a>
-					</div>
-				</li>
+				{% endfor%}
 
 
 			</ul>
@@ -225,54 +141,17 @@
 		<section >
 		<div class="main-container">
 			<ul class="grid-wrapper">
+				{% for visuel in visuels%}
 				<li class="content-item">
 					<div class="">
 					    <a href=""><img width="100%" src="img/image1.jpg"></a>
 					</div>
 					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
+						<a href=""><h3>{{visuel.title}}</h3></a>
 					</div>
 				</li>
-				<li class="content-item">
-					<div class="">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="">
-					    <a href=""><img width="100%" src="img/image3.jpg"></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="">
-					    <a href=""><img width="100%" src="img/image4.jpg"></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="">
-					    <a href=""><img width="100%" src="img/image5.jpg"></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="">
-					    <a href=""><img width="100%" src="img/image6.jpg"></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
+				{% endfor%}
+
 
 			</ul>
 			<div style="text-align: center; margin: 10px;">

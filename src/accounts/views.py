@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from Post_app.models import Video
 from accounts.forms import UserForm
 
 
@@ -39,4 +40,6 @@ def deconnection(request):
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request,"pages/profile.html",{'user':request.user})
+    post_videos=Video.objects.filter(user=request.user)
+    context={'user':request.user,"post_videos":post_videos}
+    return render(request,"pages/profile.html",context)

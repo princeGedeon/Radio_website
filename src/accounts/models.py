@@ -19,4 +19,5 @@ class User(AbstractUser):
 
     @property
     def date_joined_(self):
-        reo
+        return self.date_joined
+

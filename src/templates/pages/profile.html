@@ -62,60 +62,18 @@
     <section >
     <div class="main-container">
       <ul class="grid-wrapper">
+          {% for video in post_videos%}
         <li class="content-item">
           <div class="pic">
-              <a href="video.html"><img width="100%" src="https://img.youtube.com/vi/RCivWovB3Kg/mqdefault.jpg"></a>
-              <a href="video.html" class="centered"><i class="fa-solid fa-play"></i></a>
+              <a href="{% url 'detail_video' video.slug%}"><img width="100%" src="{{video.get_image}}"></a>
+              <a href="{% url 'detail_video' video.slug%}" class="centered"><i class="fa-solid fa-play"></i></a>
           </div>
           <div>
-            <a href="video.html"><h3>titre de la vidéo</h3></a>
+            <a href="video.html"><h3>{{video.title}}</h3></a>
           </div>
         </li>
-        <li class="content-item">
-          <div class="pic">
-              <a href=""><img width="100%" src="img/image1.jpg"></a>
-              <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div>
-            <a href=""><h3>titre de la vidéo</h3></a>
-          </div>
-        </li>
-        <li class="content-item">
-          <div class="pic">
-              <a href=""><img width="100%" src="img/image1.jpg"></a>
-              <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div>
-            <a href=""><h3>titre de la vidéo</h3></a>
-          </div>
-        </li>
-        <li class="content-item">
-          <div class="pic">
-              <a href=""><img width="100%" src="img/image1.jpg"></a>
-              <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div>
-            <a href=""><h3>titre de la vidéo</h3></a>
-          </div>
-        </li>
-        <li class="content-item">
-          <div class="pic">
-              <a href=""><img width="100%" src="img/image1.jpg"></a>
-              <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div>
-            <a href=""><h3>titre de la vidéo</h3></a>
-          </div>
-        </li>
-        <li class="content-item">
-          <div class="pic">
-              <a href=""><img width="100%" src="img/image1.jpg"></a>
-              <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-          </div>
-          <div>
-            <a href=""><h3>titre de la vidéo</h3></a>
-          </div>
-        </li>
+          {% endfor%}
+
 
       </ul>
       <div style="text-align: center; margin: 10px;">
@@ -126,10 +84,13 @@
   </section>
     </div>
 
+
   </div>
+
 
  </div>
 {% endblock%}
+{% block js%}
 <script type="text/javascript">
 
 var acc = document.getElementsByClassName("accordion");
@@ -147,4 +108,4 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
-{% block js%}{%endblock%}
+{%endblock%}

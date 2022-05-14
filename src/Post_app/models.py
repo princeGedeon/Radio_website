@@ -1,3 +1,5 @@
+from django.utils.text import slugify
+
 from accounts.models import User
 
 from django.db import models
@@ -26,6 +28,17 @@ class Visuel(Post):
 
 class Video(Post):
     link_video=models.URLField()
+    code_id=models.CharField(max_length=200,blank=True,null=True)
+    slug=models.SlugField(default=True,null=True)
+    def save(self,*args,**kwargs):
+        self.code_id=self.link_video.split('/')[-1]
+        if self.slug:
+            self.slug=slugify(str(self.pk)+'_'+self.title)
+        super().save(*args,**kwargs)
+
+    @property
+    def get_image(self):
+        return f"https://img.youtube.com/vi/{self.code_id}/mqdefault.jpg"
 
 
 class Audio(Post):
