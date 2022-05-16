@@ -1,11 +1,11 @@
-{% extends 'pages/authentification/base_account.html'%}
+{% extends 'base_account.html'%}
 {% load static%}
 {% block content%}
     <div class="form-body on-top-mobile">
         <div class="website-logo">
             <a href="index.html">
                 <div class="logo">
-                    <img class="logo-size" src="{% url 'images/logo-light.svg'%}" alt="">
+                    <img class="logo-size" src="{% static 'accounts/images/logo-light.svg'%}" alt="">
                 </div>
             </a>
         </div>
@@ -13,73 +13,74 @@
             <div class="img-holder">
                 <div class="bg"></div>
                 <div class="info-holder simple-info">
-                    <div><img src="images/graphic6.svg" alt=""></div>
-                    <div><h3>We’re Accepting applications!</h3></div>
-                    <div><p>Fill the form, attach your  latest CV <br>and portfolio to get listed.</p></div>
+                    <div><img src="{% static 'accounts/images/graphic6.svg'%}" alt=""></div>
+                    <div><h3>Bienvenue , <strong>{{user.first_name}} {{user.last_name}} ({{user.username}}) </strong></h3></div>
+                    <div><p>Encore quelques instants...<br>Il est temps de compléter ton profil</p></div>
                 </div>
             </div>
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <form>
+
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if type%}
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="First name">
+                                    <input type="text" name="matricule" class="form-control" placeholder="Ton matricule">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Last name">
+                                    <select type="text" name="filiere" class="form-control" placeholder="Ta filière">
+                                        <option value="IM">IM</option>
+                                        <option value="IM">SI</option>
+                                        <option value="IM">GL</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="E-mail Address">
+                                    <select type="text" name="annee" class="form-control" placeholder="Année">
+                                        <option value="L1">Licence 1</option>
+                                        <option value="L2">Licence 2</option>
+                                        <option value="L3">Licence 3</option>
+                                        <option value="M1">Master 1</option>
+                                        <option value="M2">Master 2</option>
+                                        <option value="D">Diplomé</option>
+
+                                    </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Phone Number">
+                                    <input type="text" name="url" class="form-control" placeholder="Linkedin link or Github link (Pas obligatoire)">
                                 </div>
+
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Country">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Linkedin link">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Website, other links">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Website, other links">
-                                </div>
-                            </div>
+                            {% endif%}
                             <div class="row">
                                 <div class="col-12">
-                                    <textarea class="form-control" placeholder="Tell us about yourself.."></textarea>
+                                    <textarea name="bio" class="form-control" placeholder="Parles moi un peu de toi.."></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="validatedCustomFile">
-                                        <label class="custom-file-label" for="validatedCustomFile">CV (Resume)</label>
+                                        <input type="file" accept="image/*" name="profil" class="custom-file-input" id="id_profil">
+                                        <label class="custom-file-label" for="id_profil">Photo de profile</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="validatedCustomFile">
-                                        <label class="custom-file-label" for="validatedCustomFile">Other attachments</label>
+                                        <input type="file" accept="image/*" name="couverture" class="custom-file-input" id="id_couverture">
+                                        <label class="custom-file-label" for="id_couverture">Image de couverture</label>
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="row top-padding">
-                                <div class="col-12 col-sm-6">
-                                    <input type="checkbox" id="chk1" required><label for="chk1">I agree on <a href="#">terms & conditions</a> of iofrm</label>
-                                </div>
+
                                 <div class="col-12 col-sm-6">
                                     <div class="form-button text-right">
-                                        <button id="submit" type="submit" class="ibtn less-padding">Submit Application</button>
+                                        <button id="submit" type="submit" class="ibtn less-padding">Soumettre</button>
                                     </div>
                                 </div>
                             </div>

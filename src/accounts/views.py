@@ -1,11 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from Post_app.models import Video
 from accounts.forms import UserForm
+from accounts.models import User
 
 
 def connection(request):
@@ -16,7 +18,10 @@ def connection(request):
         if user is not None and user.is_active:
             login(request,user)
             messages.success(request,"Bienvenue")
-            return redirect("home")
+            if user.is_completed:
+                return redirect("home")
+            else:
+                return redirect("profile_add")
         else:
             messages.error(request,"Erreur d'authentification")
     return  render(request,"accounts/login.html")
@@ -24,7 +29,38 @@ def connection(request):
 @login_required(login_url="login")
 def profile_completed(request):
     user=request.user
-    return render(request,"accounts/profile_register.html")
+    type=True if user.type=="STUDENT" else False
+
+    if request.method=="POST":
+
+        if type:
+            student=user.student
+
+            student.matricule=request.POST.get('matricule')
+            student.filiere=request.POST.get('filiere')
+            student.annee=request.POST.get('annee')
+            student.url=request.POST.get('url')
+            student.bio=request.POST.get('bio')
+            user.image = request.FILES['profil']
+            user.image_couverture=request.FILES['couverture']
+            student.save()
+            user.is_completed=True
+            user.save()
+            return redirect("home")
+
+        else:
+            visiteur=user.visiteur
+            visiteur.bio = request.POST.get('bio')
+            user.image=request.FILES['profil']
+            user.image_couverture = request.FILES['couverture']
+            visiteur.save()
+            user.is_completed=True
+            user.save()
+            return redirect("home")
+
+
+    return render(request,"accounts/profile_register.html",{'user':request.user,"type":type})
+
 def register(request):
     form=UserForm()
     if request.method=='POST':
@@ -47,6 +83,14 @@ def deconnection(request):
 
 @login_required(login_url='login')
 def profile(request):
+    type = True if request.user.type == "STUDENT" else False
     post_videos=Video.objects.filter(user=request.user)
-    context={'user':request.user,"post_videos":post_videos}
+    context={'user':request.user,"post_videos":post_videos,'type':type}
     return render(request,"pages/profile.html",context)
+
+def get_profile(request,pk):
+    user=get_object_or_404(User,pk=pk)
+    type = True if user.type == "STUDENT" else False
+    post_videos=Video.objects.filter(user=user)
+    context={'user':user,"post_videos":post_videos,'type':type}
+    return render(request,"pages/profile_public.html",context)

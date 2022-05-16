@@ -3,7 +3,6 @@
 {%block title%}WEB RADIO TV{%endblock%}
  {% block style%}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/profil.css'%}">
-
     {% endblock%}
 {%block content%}
 <div>
@@ -19,8 +18,7 @@
         {% endif%}
       <div class="card__user-info">
         <h2 class="card__user-info__name">{{user.last_name}}  {{user.first_name}} (<strong><a href='{{user.url}}'>{{user.username}}</a></strong>)
-        {% if type%}{%if user.student.is_administrator%}
-            <span class="badge text-bg-warning">ADMINISTRATEUR</span>
+        {% if type%}{%if user.student.is_administrator%}<span class="badge text-bg-warning">ADMINISTRATEUR</span>
 
            {%else%}
 <span class="badge text-bg-success">ETUDIANT</span>
@@ -28,15 +26,15 @@
 <span class="badge text-bg-primary">VISITEUR</span>
             {%endif%}
         </h2>
+
+
           {% if type%}<h5 style="padding-bottom:15px;">{{user.student.bio}}</h5>{%else%}<h5>{{user.visiteur.bio}}</h5>{%endif%}
           <p class="card__user-info__stats"><strong>Email :</strong>{{user.email}}</p>
         <h3 class="card__user-info__desc">Autres informations</h3>
           {% if type%}<p class="card__user-info__stats"><strong>Filiere</strong>: {{user.student.filiere}}</p>{%endif%}
            {% if type%}<p class="card__user-info__stats"><strong>Année</strong>: {{user.student.annee}}</p>{%endif%}
       </div>
-      <div class="card__user-actions">
-        <button onclick="document.getElementById('id01').style.display='block'"  class="card__user-actions-follow">Modifier mon profil</button>
-      </div>
+
       <div id="id01" class="modal">
                 <div class="modal-content animate">
                   <div class="imgcontainer">

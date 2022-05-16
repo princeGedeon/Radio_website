@@ -18,7 +18,7 @@
        </p>
        <br>
        <hr>
-       <h4>{{video.user}}</h4>
+       <h4>Posté par <a href="{%url 'get_profil' video.user.id%}">{{video.user.last_name}} {{video.user.first_name}}- {{video.user.username}}</a></h4>
        <h5>Description</h5>
        <p>{{video.desc}}</p>
        <br>
@@ -39,7 +39,7 @@
 		  <div class="comment">
 		    <div class="comment-header">
 		      <img class="icon" src="{{comments.user.image}}"/>
-		      <span> {{comment.user.username}} </span>
+		      <span>Par <a href="{% url 'get_profil' comment.user.id %}">{{comment.user.username}}</a>  </span>
 		      <small> {{comment.date}}</small>
 		   </div>
 		   <div class="comment-text">
@@ -55,7 +55,7 @@
 		{% for video in video_cats%}
  		<div class="vid_card">
  			<div class="vid_image">
-				<a href=""><img width="80%" src="{{video.get_image}}"></a>
+				<a href="{% url 'detail_video' video.slug%}"><img width="80%" src="{{video.get_image}}"></a>
 	 		</div>
 	 		<div class="vid_texte">
 	 			<a href="{% url 'detail_video' video.slug%}"><h3>{{video.title}}</h3></a>

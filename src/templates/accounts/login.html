@@ -32,6 +32,15 @@
                         <div class="page-links">
                         <a href="{% url 'login'%}" class="active">Login</a><a href="{% url 'register'%}" >Register</a>
                         </div>
+                        {% if messages %}
+                        <div>
+                            <ul class="messages">
+                                {% for message in messages%}
+                                <li {% if message.tags%} class="{{message.tags}}"{% endif%}>{{message}}</li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        {% endif%}
                         <form method="post">
                             {% csrf_token %}
                             <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
