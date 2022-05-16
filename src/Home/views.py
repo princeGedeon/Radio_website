@@ -14,3 +14,9 @@ def home(request):
     context={"videos":video,"audios":audio,"visuels":visuel,'n_inscrit':User.objects.count,'n_visuel':Visuel.objects.count,"n_video":Video.objects.count,'n_audio':Audio.objects.count}
 
     return render(request,"pages/index.html",context)
+
+def about(request):
+    return render(request,'pages/about.html')
+
+def contact(request):
+    return render(request,"pages/contact.html")

@@ -10,11 +10,11 @@
             <nav class="nav">
                <ul>
                   <li><a href="{% url 'home'%}" class="active">Acceuil</a></li>
-                  <li><a href="#">Contact</a></li>
+
                   <li><a href="#">Emission Tv</a></li>
                   <li><a href="#">Emission Radio</a></li>
                   <li><a href="#">Atelier graphique</a></li>
-
+                    <li><a href="{% url 'contact'%}">Contact</a></li>
                    {% if user.is_authenticated%}
                    <li><a href="{% url 'profile'%}">Mon Profil</a></li>
 

@@ -21,11 +21,18 @@ def connection(request):
             messages.error(request,"Erreur d'authentification")
     return  render(request,"accounts/login.html")
 
+@login_required(login_url="login")
+def profile_completed(request):
+    user=request.user
+    return render(request,"accounts/profile_register.html")
 def register(request):
     form=UserForm()
     if request.method=='POST':
+        type=request.POST.get('type')
+        print(type)
         form=UserForm(data=request.POST)
         if form.is_valid():
+            #form.type=type
             form.save()
             messages.success(request,'Votre compte a été créé')
             return redirect('login')

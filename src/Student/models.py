@@ -17,7 +17,7 @@ class Student(models.Model):
     annee=models.CharField(max_length=15,choices=ANNEE)
 
     def __str__(self):
-        return self.matricule
+        return self.user.email
     @property
     def get_name(self):
         return f"{self.user.first_name} {self.user.last_name}"

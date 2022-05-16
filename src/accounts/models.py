@@ -13,6 +13,7 @@ class User(AbstractUser):
     phone=models.CharField(max_length=15,blank=True,null=True)
     type=models.CharField(choices=Type.choices,max_length=255,default=Type.VISITEUR)
     USERNAME_FIELD = 'email'
+    is_completed=models.BooleanField(default=False)
 
 
     REQUIRED_FIELDS = ['phone','username']

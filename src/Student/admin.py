@@ -6,7 +6,7 @@ from Student.models import Student, Visiteur
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['matricule','get_name',"filiere","annee"]
+    list_display = ['user','get_name',"filiere","annee"]
 
 @admin.register(Visiteur)
 class VisiteurAdmin(admin.ModelAdmin):
