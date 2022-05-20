@@ -119,8 +119,8 @@
 				{% for audio in audios%}
 				<li class="content-item">
 					<div class="pic">
-					    <a href=""><img width="100%" src="img/image2.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
+					    <a href="{% url 'detail_audio' audio.slug %}"><img width="100%" src="img/image2.jpg"></a>
+					    <a href="{% url 'detail_audio' audio.slug %}" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
 						<a href="#"><h3>{{audio.title}}</h3></a>
@@ -144,10 +144,10 @@
 				{% for visuel in visuels%}
 				<li class="content-item">
 					<div class="">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
+					    <a href="{% url 'detail_image' visuel.slug %}"><img width="100%" src="{{visuel.visuel.url}}"></a>
 					</div>
 					<div>
-						<a href=""><h3>{{visuel.title}}</h3></a>
+						<a href="{% url 'detail_image' visuel.slug %}"><h3>{{visuel.title}}</h3></a>
 					</div>
 				</li>
 				{% endfor%}

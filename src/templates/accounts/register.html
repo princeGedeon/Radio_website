@@ -3,16 +3,16 @@
 {% load static%}
 {%block title%} REGISTER {%endblock%}
 {% block content%}
-    <div class="form-body " style="overflow:hidden;">
+    <div class="form-body " style="height:100%;">
 
-        <div class="row">
+        <div class="row" >
             <div class="img-holder">
-                <div class="bg"></div>
+                <div class="bg " style="background-color:red;"></div>
                 <div class="info-holder">
                     <img src="{% static 'accounts/images/graphic2.svg'%}" alt="">
                 </div>
             </div>
-            <div class="form-holder " style="padding-bottom:30px;">
+            <div class="form-holder " style="padding-bottom:20px;">
                 <div class="form-content">
                     <div class="form-items">
                         <h3>Get more things done with Loggin platform.</h3>
@@ -31,25 +31,16 @@
                         {% endif%}
                         <form method="post">
                             {% csrf_token %}
-                            <!--
-                            <input class="form-control" type="text" name="username" placeholder="Username" required id="id_username">
-                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required id="id_email">
-                            <input class="form-control" type="text" name="first_name" placeholder="Nom de famille" required id="id_first_name">
 
-                             <input class="form-control" type="text" name="last_name" placeholder="Prenoms" required id="id_last_name">
-                            <input class="form-control" type="password" name="password1" placeholder="Password" autocomplete="new-password" id="id_password1" required>
-                            <input class="form-control" type="password" name="password2" placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
-                             {{form.as_p}}
-                            -->
-                            <input class="form-control" type="text" name="username" placeholder="Username" required id="id_username">
-                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required id="id_email">
-                            <input class="form-control" type="text" name="first_name" placeholder="Nom de famille" required id="id_first_name">
+                            <input class="form-control" type="text" name="username" placeholder="Username" style="color:black;" required id="id_username">
+                            <input class="form-control" type="email" name="email" style="color:black;" placeholder="E-mail Address" required id="id_email">
+                            <input class="form-control" type="text" name="first_name" style="color:black;"  placeholder="Nom de famille" required id="id_first_name">
 
-                             <input class="form-control" type="text" name="last_name" placeholder="Prenoms" required id="id_last_name">
-                            <input class="form-control" type="password" name="password1" placeholder="Password" autocomplete="new-password" id="id_password1" required>
-                            <input class="form-control" type="password" name="password2" placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
+                             <input class="form-control" type="text" name="last_name" style="color:black;"  placeholder="Prenoms" required id="id_last_name">
+                            <input class="form-control" type="password" name="password1" style="color:black;"  placeholder="Password" autocomplete="new-password" id="id_password1" required>
+                            <input class="form-control" type="password" name="password2" style="color:black;"  placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
 
-                            <select class="form-control"  placeholder="Type de Profile"  name="type" required id="id_type">
+                            <select class="form-control" style="color:black;"   placeholder="Type de Profile"  name="type" required id="id_type">
                                 <option value="VISITEUR">Visiteur</option>
 					<option value="STUDENT">Etudiant d'IFRI</option>
 

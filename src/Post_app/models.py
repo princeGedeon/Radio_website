@@ -16,6 +16,7 @@ class Post(models.Model):
     categorie=models.ManyToManyField(Categorie)
     title=models.CharField(max_length=100)
     desc=models.TextField(max_length=30)
+    type=models.CharField(max_length=20,choices=(("Reportage","Reportage"),("Divertissement","Divertissement"),("Science","Science")),default=("Science","Science"))
 
     date_created=models.DateTimeField(auto_now_add=True)
 
@@ -24,15 +25,22 @@ class Post(models.Model):
 
 class Visuel(Post):
     visuel=models.ImageField(upload_to='post/visuel')
+    slug = models.SlugField(null=True,blank=True)
+
+    def save(self, *args, **kwargs):
+
+        if not self.slug:
+            self.slug = slugify(str(self.pk) + '_' + self.title)
+        super().save(*args, **kwargs)
 
 
 class Video(Post):
     link_video=models.URLField()
     code_id=models.CharField(max_length=200,blank=True,null=True)
-    slug=models.SlugField(default=True,null=True)
+    slug=models.SlugField(blank=True,null=True)
     def save(self,*args,**kwargs):
         self.code_id=self.link_video.split('/')[-1]
-        if self.slug:
+        if not self.slug:
             self.slug=slugify(str(self.pk)+'_'+self.title)
         super().save(*args,**kwargs)
 
@@ -43,6 +51,18 @@ class Video(Post):
 
 class Audio(Post):
     link_audio=models.URLField()
+    code_id = models.CharField(max_length=200, blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.code_id = self.link_audio.split('/')[-1]
+        if not self.slug:
+            self.slug = slugify(str(self.pk) + '_' + self.title)
+        super().save(*args, **kwargs)
+
+    @property
+    def get_image(self):
+        return f"https://img.youtube.com/vi/{self.code_id}/mqdefault.jpg"
 
 
 class Document(Post):
@@ -70,9 +90,11 @@ class CommentaireVideo(models.Model):
         return f"Commentaire de {self.user}"
 
 class CommentaireVisuel(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     message=models.TextField()
     date=models.DateTimeField(auto_now_add=True)
+
     visuel_post=models.ForeignKey(Visuel,on_delete=models.SET_NULL,null=True,blank=True)
 
 

@@ -1,9 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from Post_app.models import Categorie, CommentaireVideo,CommentaireAudio,CommentaireVisuel,Video,Visuel,Audio,Document
+from Post_app.models import Categorie, Visuel,CommentaireVideo,CommentaireAudio,CommentaireVisuel,Video,Visuel,Audio,Document
 
 @admin.register(Document)
+@admin.register(Visuel)
 @admin.register(Video)
 @admin.register(Audio)
 @admin.register(Categorie)
