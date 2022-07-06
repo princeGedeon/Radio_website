@@ -5,6 +5,7 @@ from Student.models import Student, Visiteur
 from accounts.models import User
 
 
+
 @receiver(post_save,sender=User)
 def post_save_created(sender,instance,created,**kwargs):
     if created:

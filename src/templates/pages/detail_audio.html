@@ -11,24 +11,26 @@
        <br>
        <h2>{{video.title}}</h2>
        <p>
-       	<span>1000 vues</span> -
+       	<span>{{video.type}}</span> -
        	<span class="date">{{video.date_created}}</span>
        	<a href=""><span class="heart"><i class="fa-solid fa-heart"></i></span></a>
-       	<span>500</span>
+
        </p>
        <br>
        <hr>
-       <h4>Posté par <a href="{%url 'get_profil' video.user.id%}">{{video.user.last_name}} {{video.user.first_name}}- {{video.user.username}}</a></h4>
+       <h4>Posté par <a href="{%url 'get_profil' video.user.id%}">{{video.user.pseudo}} {{video.user.first_name}}{{video.user.username}}</a></h4>
        <h5>Description</h5>
        <p>{{video.desc}}</p>
        <br>
        <hr>
+		{% if user.is_authenticated%}
        <form class="formulaire" method="post">
 		   {% csrf_token%}
 
 		    <textarea placeholder="Ajouter un commentaire" name="content"></textarea>
 		    <input class="commentButton" type='submit' value='Valider' />
 		  </form>
+		{% endif%}
        <div class="panel-header">
 		  <span id="panel-title"> Commentaires </span>
 		  <span class="counter"> {{comments.count}} </span>
@@ -39,7 +41,7 @@
 		  <div class="comment">
 		    <div class="comment-header">
 		      <img class="icon" src="{{comments.user.image}}"/>
-		      <span>Par <a href="{% url 'get_profil' comment.user.id %}">{{comment.user.username}}</a>  </span>
+		      <span>Par <a href="{% url 'get_profil' comment.user.id %}">{{comment.user.pseudo}}</a>  </span>
 		      <small> {{comment.date}}</small>
 		   </div>
 		   <div class="comment-text">

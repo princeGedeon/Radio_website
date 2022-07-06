@@ -16,12 +16,12 @@ class Student(models.Model):
     filiere=models.CharField(choices=FILIERE,blank=True,null=True,max_length=50)
     annee=models.CharField(max_length=15,choices=ANNEE)
     url=models.URLField(blank=True,null=True)
-    is_administrator=models.BooleanField(default=False)
+
     def __str__(self):
         return self.user.email
     @property
     def get_name(self):
-        return f"{self.user.first_name} {self.user.last_name}"
+        return f"{self.user.email.split('@')[0]}"
 
 
 class Visiteur(models.Model):

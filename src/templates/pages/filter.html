@@ -9,65 +9,42 @@
  <div class="card">
     <button class="accordion">Rechercher</button>
     <div class="panel">
-         	<form class="filter">
+         	<form class="filter" >
 		<div class="grand_bar">
 			<label>Search</label><br>
 			<input id="search" type="text" name="search" placeholder="Que voulez-vous chercher">
 		</div>
 		<div class="option_bar">
 			<div class="option_bar1">
-				<label>Facteur</label><br>
-				<select name="">
+				<label>Catégories</label><br>
+				<select name="categorie">
+					<option value="0">Categories</option>
 					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
+
+				</select>
+			</div>
+			<div class="option_bar2">
+				<label>Types</label><br>
+				<select name="type">
+					<option value="0">--Type---</option>
 					<option value="option1">Option1</option>
 					<option value="option1">Option1</option>
 					<option value="option1">Option1</option>
 				</select>
 			</div>
 			<div class="option_bar2">
-				<label>Facteur</label><br>
+				<label>Trier</label><br>
 				<select name="">
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-				</select>
-			</div>
-			<div class="option_bar2">
-				<label>Facteur</label><br>
-				<select name="">
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
+					<option value="0">---Tri---</option>
+					<option value="1">Ordre alphabétique croissant</option>
+					<option value="2">Ordre alphabétique décroissant</option>
+					<option value="3">Popularité croissante</option>
+					<option value="3">Popularité décroissante</option>
 				</select>
 			</div>
 		</div>
 		<div class="option_bar">
-			<div class="option_bar1">
-				<label>Types</label><br>
-				<select name="">
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-				</select>
-			</div>
-			<div class="option_bar2">
-				<label>Catégorie</label><br>
-				<select name="">
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-				</select>
-			</div>
+
 			<div class="option_bar3">
 				<input type="submit" name="" value="Search">
 			</div>
@@ -86,132 +63,19 @@
 		<section >
 		<div class="main-container">
 			<ul class="grid-wrapper">
+					{% for objet in objects%}
 				<li class="content-item">
+
 					<div class="pic">
-					    <a href="video.html"><img width="100%" src="img/image1.jpg"></a>
-					    <a href="video.html" class="centered"><i class="fa-solid fa-play"></i></a>
+					    <a href="{{objet.get_detail}}"><img width="100%" src="{{objet.get_image}}"></a>
+					    <a href="{{objet.get_detail}}" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
-						<a href="video.html"><h3>titre de la vidéo</h3></a>
+						<a href="{{objet.get_detail}}"><h3>{{objet.title}}</h3></a>
 					</div>
 				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
-				<li class="content-item">
-					<div class="pic">
-					    <a href=""><img width="100%" src="img/image1.jpg"></a>
-					    <a href="" class="centered"><i class="fa-solid fa-play"></i></a>
-					</div>
-					<div>
-						<a href=""><h3>titre de la vidéo</h3></a>
-					</div>
-				</li>
+				{% endfor%}
+
 					
 			</ul>
 			 

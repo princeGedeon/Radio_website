@@ -1,0 +1,138 @@
+{% extends 'base.html'%}
+{% load static%}
+{%block title%}WEB RADIO TV| Profil{%endblock%}
+ {% block style%}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/profil.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css'%}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    {% endblock%}
+{%block content%}
+
+
+
+ <div>
+  <div class="card">
+    <header  class="card_gallery">
+         {% if user.image_couverture%}
+        <img width="100%" src="{{user.image_couverture.url}}">
+        {% endif%}
+
+    </header>
+    <main class="card__user">
+        <img src="{{user.image.url}}" alt="" class="card__user-image">
+      <div class="card__user-info">
+        <h2 class="card__user-info__name">{{user.pseudo}}</h2>
+        <p class="card__user-info__stats">{{user.email}}</p>
+        <p class="card__user-info__desc">Autres informations</p>
+          {% if type%}<p class="card__user-info__stats"><strong>Filiere</strong>: {{user.student.filiere}}</p>{%endif%}
+           {% if type%}<p class="card__user-info__stats"><strong>Année</strong>: {{user.student.annee}}</p>{%endif%}
+      </div>
+      <div class="card__user-actions">
+        <button onclick="document.getElementById('id01').style.display='block'"  class="card__user-actions-follow">Modifier mon profil</button>
+      </div>
+      <div id="id01" class="modal">
+                <div class="modal-content animate">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  </div>
+                  <div class="modal-cont">
+
+                  <h2 style="text-align: center;">Modifier profil</h2>
+                    <form action="" method="POST">
+                      <label for="nom" class="form-label">nom</label>
+                      <input id="nom" class="form-control" type="text" name="nom" placeholder="Nom">
+                                            <label for="nom" class="form-label">nom</label>
+                      <input id="nom" class="form-control" type="text" name="nom" placeholder="Nom">
+                                            <label for="nom" class="form-label">nom</label>
+                      <input id="nom" class="form-control" type="text" name="nom" placeholder="Nom">
+                                            <label for="nom" class="form-label">nom</label>
+                      <input id="nom" class="form-control" type="text" name="nom" placeholder="Nom">
+                                            <label for="nom" class="form-label">nom</label>
+                      <input id="nom" class="form-control" type="text" name="nom" placeholder="Nom">
+
+
+                      <br>
+                      <input class="btn btn-primary" type="submit" name="validate" value="Valider">
+                      <button  type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger">Quitter</button>
+                  </form>
+                  </div>
+                </div>
+          </div>
+    </main>
+  </div>
+  <div class="card">
+    <button class="accordion">Mes Infos</button>
+    <div class="panel">
+          <br>
+    <h2 id="video" class="separation separation1"><span>Mes informations</span></h2>
+    <section >
+    <table width="100%">
+
+
+      <tr>
+        <td>Nom</td>
+        <td>{{user.first_name}}</td>
+        <td>Editer🖋️</td>
+      </tr>
+      <tr>
+        <td>Prénom</td>
+        <td>{{user.last_name}}</td>
+        <td>Editer🖋️</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{user.email}}</td>
+        <td>Editer🖋️</td>
+      </tr>
+           {% if type%}
+
+      <tr>
+        <td>Filière</td>
+        <td>{{user.student.filiere}}</td>
+        <td>Editer🖋️</td>
+      </tr>
+      <tr>
+        <td>Année</td>
+        <td>{{user.student.annee}}</td>
+        <td>Editer🖋️</td>
+      </tr>
+        {%endif%}
+    </table>
+  </section>
+    </div>
+
+  </div>
+
+ </div>
+
+<script type="text/javascript">
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("activee");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+<style type="text/css">
+  table{
+    font-size: 1.1em;
+  }
+  table td{
+    border-bottom: solid 1px black;
+    padding-top: 5px;
+  }
+
+</style>
+<script type="text/javascript" src="{% static 'js/script.js'%}"></script>
+{%endblock%}

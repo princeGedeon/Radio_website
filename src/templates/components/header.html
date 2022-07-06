@@ -14,13 +14,14 @@
                   <li><a href="{% url 'emission_tv'%}">Emission Tv</a></li>
                   <li><a href="{% url 'emission_radio'%}">Emission Radio</a></li>
                   <li><a href="{% url 'atelier_graphique'%}">Atelier graphique</a></li>
-                    <li><a href="{% url 'contact'%}">Contact</a></li>
+                    <li><a href="{% url 'about'%}">A propos</a></li>
                    {% if user.is_authenticated%}
                    <li><a href="{% url 'profile'%}">Mon Profil</a></li>
 
-                  <li><a href="{% url 'logout'%}">Se déconnecter</a></li>
+                  <li> <li><button type="button" class="btn btn-success" style="border:none;background-color:red;padding:5px 8px;"><a href="{% url 'logout'%}">Se déconnecter</a></button></li>
                    {% else%}
-                   <li><a href="{% url 'login'%}">Se Connecter</a></li>
+
+                   <li><button type="button" class="btn btn-success" style="border:none;background-color:green;padding:5px 8px;"><a href="{% url 'login'%}">Se Connecter</a></button></li>
                    {%endif%}
                </ul>
             </nav>

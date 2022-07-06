@@ -12,13 +12,17 @@ class CategorieAdmin(admin.ModelAdmin):
     pass
 @admin.register(CommentaireVideo)
 class CommentaireVideoAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ("visible",)
+    search_fields = ('user',"message")
 @admin.register(CommentaireVisuel)
 class CommentaireVisuelAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ("visible",)
+    search_fields = ('user', "message")
+    list_display = ()
 @admin.register(CommentaireAudio)
 class CommentaireAudioAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ("visible",)
+    search_fields = ('user', "message")
 
 
 

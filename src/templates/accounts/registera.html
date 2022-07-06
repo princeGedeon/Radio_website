@@ -1,0 +1,59 @@
+
+{% extends "base_account.html" %}
+{% load static%}
+{%block title%} REGISTER {%endblock%}
+{% block content%}
+    <div class="form-body " style="height:100%;">
+
+        <div class="row" >
+            <div class="img-holder">
+                <div class="bg " style="background-color:red;"></div>
+                <div class="info-holder">
+                    <img src="{% static 'accounts/images/graphic2.svg'%}" alt="">
+                </div>
+            </div>
+            <div class="form-holder " style="padding-bottom:20px;">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Get more things done with Loggin platform.</h3>
+
+                        <div class="page-links">
+                            <a href="{% url 'login'%}">Login</a><a href="{% url 'register'%}" class="active">Register</a>
+                        </div>
+                        {% if messages %}
+                        <div>
+                            <ul class="messages">
+                                {% for message in messages%}
+                                <li {% if message.tags%} class="{{message.tags}}"{% endif%}>{{message}}</li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        {% endif%}
+                        <form method="post">
+                            {% csrf_token %}
+
+
+                            <input class="form-control" type="email" name="email" style="color:black;" placeholder="E-mail Address" required id="id_email">
+                            <input class="form-control" type="password" name="password1" style="color:black;"  placeholder="Password" autocomplete="new-password" id="id_password1" required>
+                            <input class="form-control" type="password" name="password2" style="color:black;"  placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
+
+                            <select class="form-control" style="color:black;"   placeholder="Type de Profile"  name="type" required id="id_type">
+                                <option value="VISITEUR">Visiteur</option>
+					<option value="STUDENT">Etudiant d'IFRI</option>
+
+
+				</select>
+
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Register</button>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a><a href="#">Github</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

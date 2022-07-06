@@ -39,10 +39,10 @@ def profile_completed(request):
             student.matricule=request.POST.get('matricule')
             student.filiere=request.POST.get('filiere')
             student.annee=request.POST.get('annee')
-            student.url=request.POST.get('url')
+
             student.bio=request.POST.get('bio')
             user.image = request.FILES['profil']
-            user.image_couverture=request.FILES['couverture']
+
             student.save()
             user.is_completed=True
             user.save()
@@ -52,7 +52,7 @@ def profile_completed(request):
             visiteur=user.visiteur
             visiteur.bio = request.POST.get('bio')
             user.image=request.FILES['profil']
-            user.image_couverture = request.FILES['couverture']
+
             visiteur.save()
             user.is_completed=True
             user.save()
@@ -65,10 +65,12 @@ def register(request):
     form=UserForm()
     if request.method=='POST':
         type=request.POST.get('type')
-        print(type)
+
         form=UserForm(data=request.POST)
+
         if form.is_valid():
             #form.type=type
+
             form.save()
             messages.success(request,'Votre compte a été créé')
             return redirect('login')
@@ -79,14 +81,14 @@ def register(request):
 @login_required(login_url='login')
 def deconnection(request):
     logout(request)
-    return redirect("login")
+    return redirect("home")
 
 @login_required(login_url='login')
 def profile(request):
     type = True if request.user.type == "STUDENT" else False
     post_videos=Video.objects.filter(user=request.user)
     context={'user':request.user,"post_videos":post_videos,'type':type}
-    return render(request,"pages/profile.html",context)
+    return render(request,"pages/profil.html",context)
 
 def get_profile(request,pk):
     user=get_object_or_404(User,pk=pk)

@@ -1,62 +1,108 @@
-
-{% extends "base_account.html" %}
-{% load static%}
-{%block title%} REGISTER {%endblock%}
-{% block content%}
-    <div class="form-body " style="height:100%;">
-
-        <div class="row" >
-            <div class="img-holder">
-                <div class="bg " style="background-color:red;"></div>
-                <div class="info-holder">
-                    <img src="{% static 'accounts/images/graphic2.svg'%}" alt="">
-                </div>
-            </div>
-            <div class="form-holder " style="padding-bottom:20px;">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Get more things done with Loggin platform.</h3>
-
-                        <div class="page-links">
-                            <a href="{% url 'login'%}">Login</a><a href="{% url 'register'%}" class="active">Register</a>
-                        </div>
-                        {% if messages %}
-                        <div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="[noindex,nofollow]">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioIFRI| Enregistrez-vous</title>
+    <!-- fav icon-->
+    <link rel="icon" href="{% static 'images/img/browser-logo.png'%}" type="image/x-icon">
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <!-- font css-->
+    <link rel="stylesheet" href="{% static 'fonts/stylesheet.css'%}">
+    <!-- form page css-->
+    <link rel="stylesheet" href="{% static 'css/form-page.css'%}">
+  </head>
+  <body> 
+    <!-- ======= TMB Loader Start =======-->
+    <div id="tmbLoader"> </div>
+    <!-- ======= TMB Loader End =======-->
+    <!-- register main Start-->
+    <div class="form-page-header"> 
+      <div class="container">
+        <nav class="navbar py-3 navbar-expand-lg d-flex justify-content-between"><a class="navbar-brand" href="index.html">
+            <!-- header logo -->
+            <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" width="128" height="39" viewBox="0 0 128 39">
+              <g transform="translate(0 8)">
+                <circle cx="14" cy="14" r="14" fill="#211ec9"></circle>
+                <path d="M8.124,0a8.124,8.124,0,0,1,8.124,8.124c0,2.167,4.182,7.153,4.182,7.153s-9.986.971-12.306.971A8.124,8.124,0,0,1,8.124,0Z" transform="translate(5.57 6)" fill="#fff"></path>
+                <text transform="translate(34 21)" font-size="28" font-family="Poppins-Medium, Poppins" font-weight="500" letter-spacing="0.03em">
+                  <tspan x="0" y="0">Radio tv IFRI </tspan>
+                </text>
+              </g>
+            </svg></a>
+          <div class="d-flex align-items-center"><span class="nav-link p-0 d-none d-sm-block">Avez-vous un compte?</span>
+            <!-- header register button--><a class="btn btn-primary ms-4" href="{% url 'login'%}">Connectez-vous</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <section class="form-page login-form-page">
+      <div class="login-form-page-content d-flex">
+        <div class="form-page-left form-page-half text-center">
+          <div class="form-page-left-img"><img src="{% static 'img/form-image.png'%}" alt="Image Description"></div>
+          <div class="form-page-left-content mt-4">    
+            <h2 class="banner-heading text-white mb-3">Découvrez la Radio Tv d' IFRI</h2>
+            <p class="banner-brief text-white">Soyez au courant des dernieres actus.</p>
+          </div>
+        </div>
+        <div class="form-page-right form-page-half">
+          <div class="form-page-right-content"> 
+            <h2 class="sec-heading">Créer votre compte</h2>
+            <p class="sec-brief">Disposez de votre compte utilisateur pour avoir plus de fonctionnalités</p>
+            <form class="login-form mt-5" action="" method="post">
+              <div>
                             <ul class="messages">
                                 {% for message in messages%}
-                                <li {% if message.tags%} class="{{message.tags}}"{% endif%}>{{message}}</li>
+                                <li style="color:red;" {% if message.tags%} class="{{message.tags}}"{% endif%}>{{message}}</li>
                                 {% endfor%}
                             </ul>
                         </div>
-                        {% endif%}
-                        <form method="post">
-                            {% csrf_token %}
-
-                            <input class="form-control" type="text" name="username" placeholder="Username" style="color:black;" required id="id_username">
-                            <input class="form-control" type="email" name="email" style="color:black;" placeholder="E-mail Address" required id="id_email">
-                            <input class="form-control" type="text" name="first_name" style="color:black;"  placeholder="Nom de famille" required id="id_first_name">
-
-                             <input class="form-control" type="text" name="last_name" style="color:black;"  placeholder="Prenoms" required id="id_last_name">
-                            <input class="form-control" type="password" name="password1" style="color:black;"  placeholder="Password" autocomplete="new-password" id="id_password1" required>
-                            <input class="form-control" type="password" name="password2" style="color:black;"  placeholder="Confirmer Password" autocomplete="new-password" id="id_password2" required>
-
-                            <select class="form-control" style="color:black;"   placeholder="Type de Profile"  name="type" required id="id_type">
+              {% csrf_token%}
+              <div class="form-group">
+                <label class="form-label text-primary" for="email_id">Email</label>
+                <input class="form-control" id="email_id" name="email" type="email" placeholder="Example@gmail.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label text-primary" for="email_id">Type de profil</label>
+              <select class="form-control" style="color:black;"   placeholder="Type de Profile"  name="type" required id="id_type">
                                 <option value="VISITEUR">Visiteur</option>
 					<option value="STUDENT">Etudiant d'IFRI</option>
 
 
 				</select>
-
-                            <div class="form-button">
-                                <button id="submit" type="submit" class="ibtn">Register</button>
-                            </div>
-                        </form>
-                        <div class="other-links">
-                            <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a><a href="#">Github</a>
-                        </div>
-                    </div>
                 </div>
-            </div>
+
+             <div class="form-group mt-2">
+               <div class="d-flex justify-content-between">
+                  <label class="form-label text-primary d-flex" for="inputPassword5">VOtre Mot de passe</label>
+                  <button class="forgot-password">Mot de passe oublié</button>
+                </div>
+              <div class="password-wrap position-relative">
+                  <input class="form-control pe-5" id="inputPassword4" type="password" placeholder="Entrer votre mot de passe" name="password1" required>
+                  <button id="showPassword4" type="button"></button>
+                </div>
+               </div>
+              <div class="form-group mt-2">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label text-primary d-flex" for="inputPassword5">Confirmer Mot de passe</label>
+                  <button class="forgot-password">Mot de passe oublié</button>
+                </div>
+                <div class="password-wrap position-relative">
+                  <input class="form-control pe-5" id="inputPassword5" type="password"  name="password2" placeholder="Confirmer mot de passe" required>
+                  <button id="showPassword" type="button"></button>
+                </div>
+              </div>
+              <button class="btn btn-primary w-100 mt-5 submit-btn" type="submit">Start now !</button>
+              <span class="card-text mt-5 d-block">Vous vous êtes déja inscrits.<a class="text-focus" href="{% url 'login'%}"> Connectez-vous?</a></span>
+            </form>
+          </div>
         </div>
-    </div>
-{% endblock %}
+      </div>
+    </section>
+    <script src="{% static 'js/form-page.js'%}" defer> </script>
+  </body>
+</html>

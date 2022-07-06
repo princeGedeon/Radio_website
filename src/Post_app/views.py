@@ -1,18 +1,38 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import  get_object_or_404
 # Create your views here.
-from django.views.generic import ListView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, CreateView
 
 from Post_app.models import Video, CommentaireVideo, Audio, CommentaireAudio, Visuel, CommentaireVisuel
 
 
 class ListPost(ListView):
+    context_object_name = "objects"
     template_name = "pages/filter.html"
+
+class CreateVideo(CreateView):
+   model = Video
+   template_name = "pages/formulaire.html"
+   fields = ["title","desc","type","link_video"]
+   success_url = reverse_lazy("video_create")
+
+class CreateAudio(CreateView):
+   model = Audio
+   template_name = "pages/formulaire.html"
+   fields = ["title","desc","type","link_audio"]
+   success_url = reverse_lazy("audio_create")
+
+class CreateImage(CreateView):
+   model = Visuel
+   template_name = "pages/formulaire.html"
+   fields = ["title","desc","type","visuel"]
+   success_url = reverse_lazy("image_create")
 
 def detailVideo(request,slug):
     video=get_object_or_404(Video,slug=slug)
     video_cats=Video.objects.all()[0:8]
-    commentaires=CommentaireVideo.objects.filter(video_post=video).order_by('-date')
+    commentaires=CommentaireVideo.objects.filter(video_post=video).filter(visible=True).order_by('-date')
     if request.user.is_authenticated:
         if request.method=='POST':
             content=request.POST.get('content')
@@ -26,7 +46,7 @@ def detailVideo(request,slug):
 def detailAudio(request,slug):
     audio=get_object_or_404(Audio,slug=slug)
     audio_cats=Audio.objects.all()[0:8]
-    commentaires=CommentaireAudio.objects.filter(audio_post=audio).order_by('-date')
+    commentaires=CommentaireAudio.objects.filter(audio_post=audio).filter(visible=True).order_by('-date')
     if request.user.is_authenticated:
         if request.method=='POST':
             content=request.POST.get('content')
@@ -41,7 +61,7 @@ def detailAudio(request,slug):
 def detailImage(request,slug):
     image=get_object_or_404(Visuel,slug=slug)
     visuel_cats=Visuel.objects.all()[0:8]
-    commentaires=CommentaireVisuel.objects.filter(visuel_post=image).order_by('-date')
+    commentaires=CommentaireVisuel.objects.filter(visuel_post=image).filter(visible=True).order_by('-date')
     if request.user.is_authenticated:
         if request.method=='POST':
             content=request.POST.get('content')

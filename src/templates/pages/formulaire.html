@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static%}
+{%block title%}WEB RADIO TV | IMPORTATION{%endblock%}
+ {% block style%}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/filter.css'%}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/profil.css'%}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    {% endblock%}
+{%block content%}
+
+       <div id="" class="">
+                <div class="modal-content ">
+                  
+                  <div class="modal-cont">
+
+                  <h2 style="text-align: center;">Importation</h2>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token%}
+                      {{form.as_p}}
+                      
+                      <br>
+                      <input class="card__user-actions-follow" type="submit" name="validate" value="Valider">
+                      
+                  </form>
+                  </div>
+                </div>
+          </div>
+
+
+<style type="text/css">
+  form select {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+</style>
+<script type="text/javascript" src="{% static 'js/script.js'%}"></script>
+{%endblock%}

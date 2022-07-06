@@ -19,7 +19,7 @@
         {% endif%}
       <div class="card__user-info">
         <h2 class="card__user-info__name">{{user.last_name}}  {{user.first_name}} (<strong><a href='{{user.url}}'>{{user.username}}</a></strong>)
-        {% if type%}{%if user.student.is_administrator%}
+        {% if type%}{%if user.is_administrator%}
             <span class="badge text-bg-warning">ADMINISTRATEUR</span>
 
            {%else%}
