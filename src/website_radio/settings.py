@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import dj_database_url
 import os.path
 from pathlib import Path
+import django_on_heroku
+django_on_heroku.settings(locals())
 
 #COnfiguration SMTP
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
