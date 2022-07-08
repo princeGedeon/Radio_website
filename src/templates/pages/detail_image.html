@@ -41,7 +41,7 @@
 		  <div class="comment">
 		    <div class="comment-header">
 		      <img class="icon" src="{{comments.user.image}}"/>
-		      <span>Par <a href="{% url 'get_profil' comment.user.id %}">{{comment.user.username}}</a>  </span>
+		      <span>Par <a href="{% url 'get_profil' comment.user.id %}">{{comment.user.pseudo}}</a>  </span>
 		      <small> {{comment.date}}</small>
 		   </div>
 		   <div class="comment-text">
@@ -61,7 +61,7 @@
 	 		</div>
 	 		<div class="vid_texte">
 	 			<a href="{% url 'detail_image' video.slug%}"><h3>{{video.title}}</h3></a>
-	 			<p>Posté par {{video.user.username}}</p>
+	 			<p>Posté par {{video.user.username}}  {{video.user.pseudo}}</p>
 	 			<!--<p>10000 vues</p>
 	 			<p>100 <i class="fa-solid fa-heart"></i></p>-->
 	 		</div>

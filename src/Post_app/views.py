@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.shortcuts import  get_object_or_404
 # Create your views here.
@@ -10,6 +11,37 @@ from Post_app.models import Video, CommentaireVideo, Audio, CommentaireAudio, Vi
 class ListPost(ListView):
     context_object_name = "objects"
     template_name = "pages/filter.html"
+    paginate_by = 12
+
+
+
+    def get_queryset(self):
+        context_product = self.queryset
+        type=self.request.GET.get("type")
+        item = self.request.GET.get('search')
+        sort = self.request.GET.get("tri")
+
+
+        if item != '' and item is not None:
+            context_product = context_product.filter(title__icontains=item)
+        if type!="" and type is not None:
+            context_product=context_product.filter(type=type)
+
+        if sort!="" and sort is not None:
+            if sort=="1":
+                context_product=context_product.order_by('title')
+            elif sort=="2":
+                context_product=context_product.order_by('-title')
+
+
+        return context_product
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = self.get_queryset()
+
+        return context
+
 
 class CreateVideo(CreateView):
    model = Video

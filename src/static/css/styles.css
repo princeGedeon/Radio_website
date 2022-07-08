@@ -123,8 +123,8 @@ a{
 
 
 .section1{
-	background-image: url(../img/image6.jpg);
-	/*background-color: #ffffff;*/
+	background-image: linear-gradient(168deg, #00000085, #0000002e),url(../img/image6.jpg);
+
 	background-position:center;
 	background-repeat: no-repeat;
 	background-size: cover;

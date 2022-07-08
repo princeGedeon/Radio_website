@@ -27,19 +27,18 @@
 				<label>Types</label><br>
 				<select name="type">
 					<option value="0">--Type---</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
-					<option value="option1">Option1</option>
+					<option value="Reportage">Reportage</option>
+					<option value="Divertissement">Divertissement</option>
+					<option value="Science">Science</option>
 				</select>
 			</div>
 			<div class="option_bar2">
 				<label>Trier</label><br>
-				<select name="">
+				<select name="tri">
 					<option value="0">---Tri---</option>
 					<option value="1">Ordre alphabétique croissant</option>
 					<option value="2">Ordre alphabétique décroissant</option>
-					<option value="3">Popularité croissante</option>
-					<option value="3">Popularité décroissante</option>
+
 				</select>
 			</div>
 		</div>
@@ -79,7 +78,43 @@
 					
 			</ul>
 			 
+
 		</div>
+
+				<nav aria-label="Page navigation example">
+      {% if is_paginated %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{page_obj.previous_page_number}}">&laquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">&laquo;</a>
+        </li>
+        {% endif %}
+		  {% for i in paginator.page_range %}
+		  {% if page_obj.number == i %}
+        <li class="page-item"><a class="page-link active">{{ i }}</a></li>
+        	{% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        	{% endif %}
+		  {% endfor %}
+
+		  {% if page_obj.has_next %}
+        <li class="page-item">
+          <a href="?page={{page_obj.next_page_number}}" class="page-link">&raquo;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link">&raquo;</a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </nav>
 	</section>
 
 
