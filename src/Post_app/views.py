@@ -17,17 +17,21 @@ class ListPost(ListView):
 
     def get_queryset(self):
         context_product = self.queryset
-        type=self.request.GET.get("type")
+        types=self.request.GET.get("type")
         item = self.request.GET.get('search')
         sort = self.request.GET.get("tri")
+        print(item)
 
-
-        if item != '' and item is not None:
+        if item != '' and item is not None and item!=0:
             context_product = context_product.filter(title__icontains=item)
-        if type!="" and type is not None:
+        if types=='0':
+            pass
+        else:
             context_product=context_product.filter(type=type)
 
-        if sort!="" and sort is not None:
+        if sort=='0':
+            pass
+        else:
             if sort=="1":
                 context_product=context_product.order_by('title')
             elif sort=="2":

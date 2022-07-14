@@ -11,9 +11,9 @@
                <ul>
                   <li><a href="{% url 'home'%}" class="active">Acceuil</a></li>
 
-                  <li><a href="{% url 'emission_tv'%}">Emission Tv</a></li>
-                  <li><a href="{% url 'emission_radio'%}">Emission Radio</a></li>
-                  <li><a href="{% url 'atelier_graphique'%}">Atelier graphique</a></li>
+                  <li><a href="{% url 'emission_tv' %}?search=&categorie=0&type=0&tri=0">Emission Tv</a></li>
+                  <li><a href="{% url 'emission_radio'%}?search=&categorie=0&type=0&tri=0">Emission Radio</a></li>
+                  <li><a href="{% url 'atelier_graphique'%}?search=&categorie=0&type=0&tri=0">Atelier graphique</a></li>
                     <li><a href="{% url 'about'%}">A propos</a></li>
                    {% if user.is_authenticated%}
                    <li><a href="{% url 'profile'%}">Mon Profil</a></li>

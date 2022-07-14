@@ -29,24 +29,24 @@
 				<div class="mySlides fade">
 				  <div class="back_text"></div>
 				  <div class="text">
-				  	<em>k.</em>
-				  	<div class="but"><span>En savoir plus</span></div>
+				  	<em>Les étudiants de l'IFRI sont formés avec le goût pour l'innovation et l'entreprenariat afin de développer des solutions pour résoudre des problèmes spécifiques de leur milieu de vie, et du monde en général.</em>
+				  	<div class="but"><a href="https://ifri-uac.bj/" style="text-decoration:none;"><span>En savoir plus</span></a></div>
 				  </div>
 				</div>
 
 				<div class="mySlides fade">
 				  <div class="back_text"></div>
 				  <div class="text">
-				  	<em>Campagne accélérée de vaccination contre la Covid-19 au Bénin : Les leaders d'opinion sensibilisés</em>
-				  	<div class="but"><span>En savoir plus</span></div>
+				  	<em>L'institut dispose d'un laboratoire de recherche en science informatique et application qui permet aux doctorants et aux enseignants de mener des travaux de recherches et d'innovations.</em>
+				  	<div class="but"><a href="https://ifri-uac.bj/" style="text-decoration:none;"><span>En savoir plus</span></a></div>
 				  </div>
 				</div>
 
 				<div class="mySlides fade">
 				  <div class="back_text"></div>
 				  <div class="text">
-				  	<em>CORONAVIRUS - Levée des mesures préventives et restrictives : Le Gouvernement pour la relance des activités économiques, culturelles et sociales </em>
-				  	<div class="but"><span>En savoir plus</span></div>
+				  	<em>Le programme de formation dans l'institut contient des cours de certifications dans divers domaines. Ainsi nos édutiants en L3 suivent les cours de certifications CCNA, CND, CEH, Mikrotik, Oracle </em>
+				  	<div class="but"><a href="https://ifri-uac.bj/"  style="text-decoration:none;"><span>En savoir plus</span></a></div>
 				  </div>
 				</div>
 
@@ -96,7 +96,7 @@
 					    <a href="{%url 'detail_video' video.slug%}" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
-						<a href="video.html"><h3>{{video.title}}</h3></a>
+						<a href="{%url 'detail_video' video.slug%}"><h3>{{video.title}}</h3></a>
 					</div>
 				</li>
 				{% endfor%}
@@ -122,7 +122,7 @@
 					    <a href="{% url 'detail_audio' audio.slug %}" class="centered"><i class="fa-solid fa-play"></i></a>
 					</div>
 					<div>
-						<a href="#"><h3>{{audio.title}}</h3></a>
+						<a href="{% url 'detail_audio' audio.slug %}"><h3>{{audio.title}}</h3></a>
 					</div>
 				</li>
 				{% endfor%}
